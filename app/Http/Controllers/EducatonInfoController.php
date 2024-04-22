@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\AppendFile;
 use App\CommonHistory;
-use App\Models\BoardView;
 use App\Rules\UploadFile;
 use App\Models\RaonMember;
 use App\EducatonInfo;
@@ -328,7 +327,7 @@ class EducatonInfoController extends Controller
                     $file_path = AppendFile::getVimeoThumbnailUrl($vimeo_id);
                 } else {
                     $file = \App::make('helper')->rotateImage($file);
-                    $file_path = \App::make('helper')->putResizeS3(File::FILE_DIR, $file);
+                    $file_path = \App::make('helper')->putResizeS3(File::FILE_DIR, $file, 1160,180);
                 }
 
                 $payload = [
@@ -516,10 +515,10 @@ class EducatonInfoController extends Controller
 
     public function educationView($id)
     {
-        $userId = \App::make('helper')->getUsertId();
+        $uesrId = \App::make('helper')->getUsertId();
         $userType = \App::make('helper')->getUsertType();
         $eventReq = Request::create('/api/educatonInfo/view/'.$id, 'GET', [
-            'user' => $userId
+            'user' => $uesrId
         ]);
         $res = $this->show($eventReq, $id);
 
@@ -528,24 +527,9 @@ class EducatonInfoController extends Controller
             \App::make('helper')->alert($error);
         }
 
-        $boardView = new BoardView();
-
-        $boardView->user_id = $userId;
-        $boardView->board_type = 'education';
-        $boardView->board_id = $id;
-
-        $boardView->save();
-
-        $getCountQuery = BoardView::where('board_type', 'education')->where('board_id', $id);
-
-        $getAllCountBoardView = $getCountQuery->count();
-        $getFilterCountBoardView = $getCountQuery->distinct()->count('user_id');
-
         return view('education/view',[
             'row' => $res->original ?? [],
             'id' => $id,
-            'getAllCountBoardView' => $getAllCountBoardView ?? 0,
-            'getFilterCountBoardView' => $getFilterCountBoardView ?? 0,
         ]);
     }
 

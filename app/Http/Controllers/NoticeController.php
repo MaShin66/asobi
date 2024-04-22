@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\AppendFile;
 use App\CommonComment;
 use App\Jobs\BatchPush;
-use App\Models\BoardView;
 use App\Notice;
 use App\NoticeFile;
 use App\NoticeHistory;
 use App\Models\RaonMember;
 use App\RequestLog;
-use Aws\Api\Parser\XmlParser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -335,8 +333,6 @@ class NoticeController extends Controller
 
         $title = $request->input('title');
         $content = $request->input('content');
-
-        $content = preg_replace('/(<br\s*\/?>)/', ' $1', $content);
 
         //권한 설정
         // @20200103 지사 공지사항 일 경우 해당 지사의 교육원만 볼 수 있다.
@@ -677,13 +673,13 @@ class NoticeController extends Controller
     public function noticeView(Request $request, $id)
     {
         $ym = $request->input('ym') ?? date('Y-m');
-        $userId = \App::make('helper')->getUsertId();
+        $uesrId = \App::make('helper')->getUsertId();
         $userType = \App::make('helper')->getUsertType();
         if (in_array($userType, ['a','h'])) {
-            $userId = session()->get('center');
+            $uesrId = session()->get('center');
         }
         $albumReq = Request::create('/api/notice/view/'.$id, 'GET', [
-            'user' => $userId,
+            'user' => $uesrId,
         ]);
         $res = $this->show($albumReq, $id);
         $student = $res->original['student'] ?? [];
@@ -693,19 +689,6 @@ class NoticeController extends Controller
             \App::make('helper')->alert($error);
         }
 
-        $boardView = new BoardView();
-
-        $boardView->user_id = $userId;
-        $boardView->board_type = 'notice';
-        $boardView->board_id = $id;
-
-        $boardView->save();
-
-        $getCountQuery = BoardView::where('board_type', 'notice')->where('board_id', $id);
-
-        $getAllCountBoardView = $getCountQuery->count();
-        $getFilterCountBoardView = $getCountQuery->distinct()->count('user_id');
-
         return view('notice/view',[
             'row' => $res->original ?? [],
             'modifyBtn' => \App::make('helper')->getUsertId() == $res->original['user_id'],
@@ -714,8 +697,6 @@ class NoticeController extends Controller
             'studentReadY' => $res->original['readed_students'] ?? [],
             'back_link' => "/notice?ym=".$ym,
             'id' => $id,
-            'getAllCountBoardView' => $getAllCountBoardView ?? 0,
-            'getFilterCountBoardView' => $getFilterCountBoardView ?? 0,
         ]);
     }
 
@@ -784,7 +765,7 @@ class NoticeController extends Controller
 
         $user = \App::make('helper')->getUsertId();
         $userType = \App::make('helper')->getUsertType();
-        if (in_array($userType, ['h'])) {
+        if (in_array($userType, ['a','h'])) {
             $user = session()->get('center');
         }
 

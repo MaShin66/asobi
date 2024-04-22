@@ -96,10 +96,8 @@ if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== fal
                 <script type="text/javascript">
                     <!--
                     CKEDITOR.replace('content', {
-                        // extraPlugins: 'uploadimage, image2',
-                        language : 'ko',
+                        extraPlugins: 'uploadimage, image2',
                         height : '300px',
-                        linkDefaultProtocol: 'https://',
                         // filebrowserImageUploadUrl : '/api/editor/fileWrite?type=1',
                         enterMode : CKEDITOR.ENTER_BR,
                         toolbarGroups : [
@@ -201,12 +199,12 @@ if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== fal
             return false;
         }
 
-        // if (ymdValue > currentDate) {
-        //     fsubmit = false;
-        //     $("#fsubmit").prop('disabled',false);
-        //     jalert('미래 날짜는 선택할 수 없습니다.');
-        //     return false;
-        // }
+        //if (ymdValue > currentDate) {
+        //    fsubmit = false;
+        //    $("#fsubmit").prop('disabled',false);
+        //    jalert('미래 날짜는 선택할 수 없습니다.');
+        //    return false;
+        //}
 
         let contents = CKEDITOR.instances.content.getData();
 
@@ -462,7 +460,7 @@ if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== fal
                 '</label>' +
                 '</div>';
 
-
+            
             addForm += '<input id="upload_file_'+i+'" multiple="multiple" name="upload_files[]" class="upload_files d-none" data-id="'+i+'" type="file" accept="image/*,video/*" />';
 
             $('#imgUpload').append(addForm);

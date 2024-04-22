@@ -35,7 +35,7 @@ $back_link = "/";
                         <a href="/education/view/{{ $l['id'] }}">
                             <div class="rect rect3 rounded-lg">
                                 @if(isset($l['image']) && $l['image'])
-                                <img src="{{ $l['image'] }}" style="object-fit: contain;">
+                                <img src="{{ $l['image'] }}">
                                 @else
                                 <i class="no_img"></i>
                                 @endif

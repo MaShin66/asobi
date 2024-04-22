@@ -16,13 +16,8 @@ $back_link = "/event";
                 @include('common.tabs')
             </div>
             <div class="pb-4 mb-3 mb-lg-2 border-bottom d-flex align-items-center justify-content-between">
-                <div class="w-100">
-                    <h4 class="tit_h4 mb-3 line_h1 d-flex justify-content-between">
-                        <div>{!! nl2br($row['subject']) !!}</div>
-                        @if(isset(session('auth')['user_type']) && session('auth')['user_type'] == 'a')
-                            <div class="fs_12 fw_300 text-light" style="text-align: right; min-width: 80px;">전체 조회수: {{ number_format($getAllCountBoardView) }} / 순 조회수: {{ number_format($getFilterCountBoardView) }}</div>
-                        @endif
-                    </h4>
+                <div>
+                    <h4 class="tit_h4 mb-3 line_h1">{!! nl2br($row['subject']) !!}</h4>
                     <div class="d-flex align-items-center">
                         <span class="ev_stat @if($row['status_text'] == "진행중") ev_1 @else ev_2 @endif">{{ $row['status_text'] }}</span>
                         <div class="d-flex flex-wrap ml-1">
@@ -55,9 +50,8 @@ $back_link = "/event";
                     <button type="button" class="btn btn-gray text-white" onclick="location.href='/event'">목록</button>
                 @endif
             </div>
-            @if($row['useComment'] == 1)
             <hr class="line mt-5 mb-3">
-            <div class="pt-3">
+            <!-- div class="pt-3">
                 <div class="pb-0 pb-lg-4 px-0 px-lg-3 mx-0 mx-lg-3">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div class="d-flex align-items-center">
@@ -73,8 +67,7 @@ $back_link = "/event";
                     </form>
                 </div>
                 <div id="commetHtml"></div>
-                @endif
-            </div>
+            </div -->
         </div>
     </article>
 
@@ -293,13 +286,13 @@ $back_link = "/event";
 
         document.querySelectorAll('a').forEach(function(anchor) {
             anchor.addEventListener('click', function(event) {
-                // $('#loading').show();
+                $('#loading').show();
             });
         });
 
         document.querySelectorAll('[onclick*="location.href"]').forEach(function(element) {
             element.addEventListener('click', function(event) {
-                $('#loading').show();
+                // $('#loading').show();
             });
         });
     </script>

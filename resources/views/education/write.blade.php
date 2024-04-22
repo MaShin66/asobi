@@ -49,11 +49,10 @@ $back_link = "/education";
                 <!-- EDITOR -->
                 <textarea class="form-control" name="content" placeholder="내용을 입력해주세요" rows="5">{!! $row['content'] ?? '' !!}</textarea>
                 <script type="text/javascript">
+                    <!--
                     CKEDITOR.replace('content', {
-                        // extraPlugins: 'uploadimage, image2',
-                        language : 'ko',
+                        extraPlugins: 'uploadimage, image2',
                         height : '300px',
-                        linkDefaultProtocol: 'https://',
                         filebrowserImageUploadUrl : '/api/editor/fileWrite?type=1',
                         enterMode : CKEDITOR.ENTER_BR,
                         toolbarGroups : [
@@ -74,6 +73,7 @@ $back_link = "/education";
                         ],
                         removeButtons : 'Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Save,NewPage,Preview,Print,Templates,ShowBlocks,Undo,Redo,PasteFromWord,PasteText,Anchor,Flash,Smiley,SpecialChar,PageBreak,Iframe,Subscript,Superscript,CopyFormatting,Outdent,Indent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,About,Styles,Font',
                     });
+                    //-->
                 </script>
             </div>
 
@@ -176,7 +176,7 @@ $(document).ready(function() {
             '</label>' +
             '<input id="upload_file_'+i+'" name="upload_files['+i+']" class="upload_files" data-id="'+i+'" type="file" accept="image/*" />' +
             '</div>';
-        $('#imgUpload').append(addForm)
+        $('#imgUpload').append(addForm);
         $('#label_upload_file_'+i).trigger('click');
         i++;
     });
@@ -192,12 +192,12 @@ $(document).ready(function() {
         '</label>' +
         '<input id="upload_file_'+i+'" name="upload_files['+i+']" class="upload_files" data-id="'+i+'" type="file" accept="image/*" />' +
         '</div>';
-    $('#imgUpload').append(addForm)
+    $('#imgUpload').append(addForm);
     @endif
 
     $(document).on('change', '.upload_files', function(e) {
         const imageMaxSize = 10 * 1024 * 1024; // 10MB
-        const videoMaxSize = 10 * 10 * 1024 * 1024 * 1.1; // 110MB
+        const videoMaxSize = 10 * 10 * 1024 * 1024; // 100MB
 
         for (var i = 0; i < this.files.length; i++) {
 

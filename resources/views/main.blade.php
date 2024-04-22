@@ -307,17 +307,16 @@
                         <div class="swiper-wrapper">
                             @foreach($mainBanner as $l)
                                 <div class="swiper-slide">
-{{--                                    <div class="d-none d-lg-block banner_img cursor_pointer" style="background-image:url('{{ $l['image'] ?? '' }}')" onclick="document.location.href='{{ $l['bannerLink'] ?? '/event/view/' . $l['id'] . '?isBanner=1' }}'"></div>--}}
-{{--                                    <div class="d-none d-lg-block banner_img cursor_pointer" style="background-image:url('{{ $l['image'] ?? '' }}')" onclick="openLink('{{ $l['bannerLink'] ?? '/event/view/' . $l['id'] . '?isBanner=1' }}')"></div>--}}
-                                    <div class="d-none d-lg-block banner_img cursor_pointer" style="background-image:url('{{ $l['image'] ?? '' }}')" onclick="openLink('{{ $l['bannerLink'] }}', '{{ $l['id'] }}')"></div>
-                                    <div class="d-none d-md-block d-lg-none banner_img cursor_pointer" style="background-image:url('{{ $l['image2'] ?? '' }}')" onclick="openLink('{{ $l['bannerLink'] }}', '{{ $l['id'] }}')"></div>
-                                    <div class="d-block d-md-none banner_img cursor_pointer" style="background-image:url('{{ $l['image3'] ?? '' }}')" onclick="openLink('{{ $l['bannerLink'] }}', '{{ $l['id'] }}')"></div>
+                                    <div class="d-none d-lg-block banner_img cursor_pointer" style="background-image:url('{{ $l['image'] ?? '' }}')" onclick="document.location.href='/event/view/{{ $l['id'] ?? '' }}'"></div>
+                                    <div class="d-none d-md-block d-lg-none banner_img cursor_pointer" style="background-image:url('{{ $l['image2'] ?? '' }}')" onclick="document.location.href='/event/view/{{ $l['id'] ?? '' }}'"></div>
+                                    <div class="d-block d-md-none banner_img cursor_pointer" style="background-image:url('{{ $l['image3'] ?? '' }}')" onclick="document.location.href='/event/view/{{ $l['id'] ?? '' }}'"></div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
             @endif
+        </div>
         </div>
 
         <div class="loading_wrap" id="loading" style="display: none">
@@ -395,14 +394,6 @@
         // window.onload = function () {
         //    alert("현재 접속량이 많아 일시적으로 느려질 수 있습니다.");
         // }
-
-        function openLink(bannerLink, id) {
-            if (bannerLink) {
-                window.open(bannerLink, '_blank');
-            } else {
-                document.location.href = '/event/view/' + id + '?isBanner=1';
-            }
-        }
     </script>
     <form name="selectAction" id="selectAction" method="POST" action="/main/selectAction">
         <input type="hidden" name="type" value=""/>

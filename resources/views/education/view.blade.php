@@ -17,13 +17,8 @@ $back_link = "/education";
         </div>
 
         <div class="pb-4 mb-3 mb-lg-2 border-bottom d-flex align-items-center justify-content-between">
-            <div class="w-100">
-                <div class="fs_14 fw_300 mb-3 text-light d-flex justify-content-between">
-                    <div>{{ $row['date'] }}</div>
-                    @if(isset(session('auth')['user_type']) && session('auth')['user_type'] == 'a')
-                        <div class="fs_14 fw_300 text-light" style="text-align: right; min-width: 80px;">전체 조회수: {{ number_format($getAllCountBoardView) }} / 순 조회수: {{ number_format($getFilterCountBoardView) }}</div>
-                    @endif
-                </div>
+            <div class="d-flex flex-column">
+                <p class="fs_14 fw_300 mb-3 text-light">{{ $row['date'] }}</p>
                 <h4 class="tit_h4 line_h1">{!! nl2br($row['subject']) !!}</h4>
             </div>
             @if(isset(session('auth')['user_type']) && session('auth')['user_type'] =='a')

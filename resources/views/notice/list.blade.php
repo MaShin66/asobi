@@ -96,7 +96,7 @@ if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== fal
                     <a href="/notice/view/{{ $l['id'] }}?ym={{ $ym }}">
                         <p class="text-dark_gray fs_13 fw_300 mb-3"><span class="text-primary fw_500 mr-2">[{{ $l['type'] }}공지]</span> {{ $l['date'] ?? '' }}</p>
                         <h4 class="tit_h4 mb-3">{{ $l['title'] ?? '' }}</h4>
-                        <p class="line2_text line_h1_4 content_wrap">{!! strip_tags($l['content'], '<br>') ?? '' !!}</p>
+                        <p class="line2_text line_h1_4">{!! $l['content'] ?? '' !!}</p>
                         @if(isset($l['file']) && count($l['file']) > 0)
                         <div class="note_img_list advice_slider">
                             <div class="swiper-wrapper">
@@ -166,6 +166,8 @@ if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== fal
     $(window).on("load", function() {
         getVimeoThumbs();
     });
+
+
 
     // document.querySelectorAll('a').forEach(function(anchor) {
     //     anchor.addEventListener('click', function(event) {

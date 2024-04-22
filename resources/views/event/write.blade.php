@@ -49,44 +49,6 @@ $back_link = "/event";
                     </div>
                 </div>
             </div>
-
-            <div class="ip_wr my-4">
-                <div class="ip_tit">
-                    <h5>댓글 사용</h5>
-                </div>
-                <div class="checks_wr">
-                    <div class="checks">
-                        <label>
-                            <input type="radio" name="useComment" value="1" {{ isset($row['useComment']) && $row['useComment'] == 1 ? 'checked' : '' }}>
-                            <span class="ic_box"></span>
-                            <div class="chk_p">
-                                <p>사용</p>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="checks">
-                        <label>
-                            <input type="radio" name="useComment" value="0" {{ isset($row['useComment']) && $row['useComment'] == 0 ? 'checked' : '' }}>
-                            <span class="ic_box"></span>
-                            <div class="chk_p">
-                                <p>중지</p>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <div class="ip_wr">
-                    <div class="ip_tit d-flex align-items-center justify-content-between">
-                        <h5>노출 순서</h5>
-                    </div>
-                </div>
-                <div class="grid02_list_input" style="width: 60px;">
-                    <input type="number" name="order" value="{{ $row['order'] ?? 0 }}" min="0" class="form-control">
-                </div>
-            </div>
-
             <div class="form-group ip_wr mt-4 mt-lg-5 mb-0 mb-lg-4">
                 <div class="ip_tit d-flex align-items-center">
                     <h5 class="mr-3">썸네일 이미지1</h5>
@@ -147,17 +109,6 @@ $back_link = "/event";
             <div class="mt-4">
                 <div class="ip_wr">
                     <div class="ip_tit d-flex align-items-center justify-content-between">
-                        <h5>배너 링크</h5>
-                    </div>
-                </div>
-                <div class="grid02_list_input">
-                    <input type="text" name="bannerLink" value="{{ $row['bannerLink'] ?? '' }}" class="form-control">
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <div class="ip_wr">
-                    <div class="ip_tit d-flex align-items-center justify-content-between">
                         <h5>이벤트 기간</h5>
                     </div>
                 </div>
@@ -178,10 +129,8 @@ $back_link = "/event";
                 <script type="text/javascript">
                     <!--
                     CKEDITOR.replace('content', {
-                        // extraPlugins: 'uploadimage, image2',
-                        language : 'ko',
+                        extraPlugins: 'uploadimage, image2',
                         height : '300px',
-                        linkDefaultProtocol: 'https://',
                         filebrowserImageUploadUrl : '/api/editor/fileWrite?type=2',
                         enterMode : CKEDITOR.ENTER_BR,
                         toolbarGroups : [
@@ -373,15 +322,6 @@ $back_link = "/event";
             }
         }
 
-        if (f.bannerLink.value) {
-            if (f.bannerLink.value.length > 250) {
-                fsubmit = false;
-                $("#fsubmit").prop('disabled',false);
-                jalert("배너 링크는 250자 이하로 입력해주세요.");
-                return false;
-            }
-        }
-
         $('#loading').show();
 
         return true;
@@ -403,7 +343,7 @@ $back_link = "/event";
                 '</label>' +
                 '<input id="upload_file_'+i+'" name="upload_files['+i+']" class="upload_files" data-id="'+i+'" type="file" accept="image/*" />' +
                 '</div>';
-            $('#imgUpload').append(addForm)
+            $('#imgUpload').append(addForm);
             $('#label_upload_file_'+i).trigger('click');
             i++;
         });
@@ -419,12 +359,12 @@ $back_link = "/event";
             '</label>' +
             '<input id="upload_file_'+i+'" name="upload_files['+i+']" class="upload_files" data-id="'+i+'" type="file" accept="image/*" />' +
             '</div>';
-        $('#imgUpload').append(addForm)
+        $('#imgUpload').append(addForm);
         @endif
 
         $(document).on('change', '.upload_files', function(e) {
             const imageMaxSize = 10 * 1024 * 1024; // 10MB
-            const videoMaxSize = 10 * 10 * 1024 * 1024 * 1.1; // 110MB
+            const videoMaxSize = 10 * 10 * 1024 * 1024; // 100MB
 
             for (var i = 0; i < this.files.length; i++) {
 
