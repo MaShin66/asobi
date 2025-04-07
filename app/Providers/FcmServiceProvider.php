@@ -16,7 +16,7 @@ class FcmServiceProvider extends ServiceProvider
 {
     public function register()
     {
-//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') {
+//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') {
 //            $this->bindFcmDeviceRepository();
 //
 //            $this->app->singleton(FcmHandler::class, function ($app) {

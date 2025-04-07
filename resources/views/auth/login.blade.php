@@ -11,7 +11,7 @@ class="body"
         </div>
         <form class="login-form" name="login-form" id="login-form" method="POST" action="/auth/loginAction">
 
-            <?php if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') : ?>
+            <?php if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') : ?>
                 <input type="text" name="device_kind" id="device_kind" value="{{ session('auth')['device_kind'] ?? $device_kind }}" />
                 <input type="text" name="device_type" id="device_type" value="{{ session('auth')['device_type'] ?? $device_type }}" />
                 <input type="text" name="device_id" id="device_id" value="{{ session('auth')['device_id'] ?? $device_id }}" />

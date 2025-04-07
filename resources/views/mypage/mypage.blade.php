@@ -39,7 +39,7 @@ $back_link = "/";
         </form>
         @endif
 
-        <?php if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') : ?>
+        <?php if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') : ?>
             <input type="text" name="device_id" id="device_id" value="{{ session('auth')['device_id'] ?? '' }}" />
             <input type="text" name="push_key" id="push_key" value="{{ session('auth')['push_key'] ?? '' }}" />
         <?php endif; ?>

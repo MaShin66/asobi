@@ -504,7 +504,7 @@ class AttendanceController extends Controller
         $redData = $calendarRes->original['list']['red'] ?? [];
 
 
-//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') {
+//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') {
 //            echo '<xmp>';
 //            var_dump($blueData);
 //            echo '</xmp>';

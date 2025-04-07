@@ -604,7 +604,7 @@ class AdviceNoteController extends Controller
             $result = Arr::add($result, "write_possible", false);
         }
 
-//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') {
+//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') {
 //            dd($user->mtype);
 //        }
 

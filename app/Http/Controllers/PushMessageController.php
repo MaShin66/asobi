@@ -547,7 +547,7 @@ class PushMessageController extends Controller
 //                                $handler->setMessage(['title'=> $title, 'body'=> $body, 'type'=> $this->type, 'id'=> $row->id, 'userId'=>$row->sidx, 'check'=>$attendance_check, 'date' => $date]);
 //                                $handler->setMessageData(['title'=> $title, 'message'=> $body, 'type'=> $this->type, 'id'=> $row->id,'userId'=>$row->sidx,'check'=>$attendance_check, 'date' => $date]);
 //                                $handler->sendMessage();
-                                if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') {
+                                if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') {
 //                                    $arr_push = [
 //                                        /* 아이폰2 */ "foRHE6Eku0O-g52DCu2akR:APA91bGCcYZSOO3H-JpjwPFQ_5IXtETctxCjoG-C7mu7pLUFL7RwUMOIHgtzoy0Hi925TungzQRLH6bsE9-2UP3E4fj18rFEY_InDp2PlX_u9ZDnPwRaWCTjBWsVPNfbLvnG4-J2DuZR",
 //                                        /* 내 갤럭시 */ "ckYZH8nMScC6rPFfXTRnHq:APA91bGRXLId-8re6FNhcv_RAh909Z47hoqsN9hGg8jvJy3uroyZmvmvhEAwMk5y2M6ukyZz3HFrn8yDDTK2-llJW-NEAlaVa6Z1znhvQPvl9WbH6wqQSykzvCKUfC68PJFr2wsDyxnJ",

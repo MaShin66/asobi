@@ -124,8 +124,8 @@ class UserAppInfoController extends Controller
 
         if ($user->mtype == 's') {
             if ($device_kind == "web" && $phpisMobile === false) {
-                if (!in_array($_SERVER['REMOTE_ADDR'], ['221.148.221.39', '115.93.23.14'])) {
-//                if ($_SERVER['REMOTE_ADDR'] !== '221.148.221.39') {
+                if (!in_array($_SERVER['REMOTE_ADDR'], ['221.148.221.127', '115.93.23.14'])) {
+//                if ($_SERVER['REMOTE_ADDR'] !== '221.148.221.127') {
                     $result['result'] = 'fail';
                     $result = Arr::add($result, 'error', '학부모 로그인은 앱에서만 가능합니다.');
                     return response()->json($result);
@@ -1034,7 +1034,7 @@ class UserAppInfoController extends Controller
             $phpisMobile = false;
         }
 
-//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.39') {
+//        if ($_SERVER['REMOTE_ADDR'] === '221.148.221.127') {
 //            \App::make('helper')->log('pushKeyError', ['message' => '푸시키를 받아오지 못해 앱을 완전히 종료 후 재로그인 부탁드리겠습니다.'], '', 'warning');
 //        }
 
@@ -1044,7 +1044,7 @@ class UserAppInfoController extends Controller
             && $request->input('device_id') == 'web'
             && $request->input('push_key') == 'web'
         ) {
-            if (!in_array($_SERVER['REMOTE_ADDR'], ['221.148.221.39', '115.93.23.14'])) {
+            if (!in_array($_SERVER['REMOTE_ADDR'], ['221.148.221.127', '115.93.23.14'])) {
                 \App::make('helper')->alert('푸시키를 받아오지 못하였습니다.\n 아소비 앱 삭제 > 휴대폰 재부팅 > 앱 재설치시 알림 권한을 허용해주세요.', '/');
             }
         }
