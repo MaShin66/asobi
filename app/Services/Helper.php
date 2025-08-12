@@ -454,44 +454,72 @@ EEE;
 
     public function rotateImage($file)
     {
-        // 회전 된 이미지 그대로 보여주기
-        if (exif_imagetype($file) && exif_imagetype($file) === IMAGETYPE_JPEG) {
-            $exif = exif_read_data($file);
-
-            if(isset($exif['Orientation'])) {
-                $orientation = $exif['Orientation'];
-
-                if($orientation != 1){
-                    $img = imagecreatefromjpeg($file);
-
-                    if (in_array($exif['Orientation'], [3, 4])) {
-                        $img = imagerotate($img, 180, 0);
-                    }
-                    if (in_array($exif['Orientation'], [5, 6])) {
-                        $img = imagerotate($img, -90, 0);
-                    }
-                    if (in_array($exif['Orientation'], [7, 8])) {
-                        $img = imagerotate($img, 90, 0);
-                    }
-                    if (in_array($exif['Orientation'], [2, 5, 7, 4])) {
-                        imageflip($img, IMG_FLIP_HORIZONTAL);
-                    }
-
-                    $tempPath = tempnam(sys_get_temp_dir(), 'rotated_image');
-                    imagejpeg($img, $tempPath);
-
-                    // 메모리 해제
-                    imagedestroy($img);
-
-                    // 임시 파일을 원본 파일로 복사 또는 이동
-                    copy($tempPath, $file);
-
-                    // 임시 파일 삭제
-                    unlink($tempPath);
-                }
-            }
+        // 파일이 존재하는지 확인
+        if (!file_exists($file)) {
+            \Log::error("파일이 존재하지 않음: {$file}");
+            return $file;
         }
-
+    
+        // 파일이 JPEG인지 확인 (exif_imagetype을 두 번 실행하지 않도록 변경)
+        $imageType = exif_imagetype($file);
+        if ($imageType !== IMAGETYPE_JPEG) {
+            \Log::warning("JPEG 파일이 아님: {$file}");
+            return $file;
+        }
+    
+        // EXIF 데이터 읽기 (경고 방지를 위해 @ 사용)
+        $exif = @exif_read_data($file);
+        if (!$exif) {
+            \Log::warning("EXIF 데이터가 없음 또는 잘못됨: {$file}");
+            return $file;
+        }
+    
+        // EXIF Orientation 값이 있는지 확인
+        if (!isset($exif['Orientation'])) {
+            \Log::warning("Orientation 정보가 없음: {$file}");
+            return $file;
+        }
+    
+        $orientation = $exif['Orientation'];
+    
+        // Orientation이 1(정방향)일 경우 회전할 필요 없음
+        if ($orientation == 1) {
+            return $file;
+        }
+    
+        // 이미지 로드
+        $img = imagecreatefromjpeg($file);
+        if (!$img) {
+            \Log::error("이미지를 불러올 수 없음: {$file}");
+            return $file;
+        }
+    
+        // 회전 처리
+        if (in_array($orientation, [3, 4])) {
+            $img = imagerotate($img, 180, 0);
+        }
+        if (in_array($orientation, [5, 6])) {
+            $img = imagerotate($img, -90, 0);
+        }
+        if (in_array($orientation, [7, 8])) {
+            $img = imagerotate($img, 90, 0);
+        }
+        if (in_array($orientation, [2, 5, 7, 4])) {
+            imageflip($img, IMG_FLIP_HORIZONTAL);
+        }
+    
+        // 임시 파일 저장
+        $tempPath = tempnam(sys_get_temp_dir(), 'rotated_image');
+        imagejpeg($img, $tempPath);
+        imagedestroy($img); // 메모리 해제
+    
+        // 원본 파일 덮어쓰기
+        if (!copy($tempPath, $file)) {
+            \Log::error("파일 덮어쓰기 실패: {$file}");
+        }
+    
+        unlink($tempPath); // 임시 파일 삭제
+    
         return $file;
     }
 }

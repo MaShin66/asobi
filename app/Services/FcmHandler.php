@@ -220,6 +220,13 @@ class FcmHandler
                         'body' => $this->message['body'],
                     ],
                     'data' => $this->message_data,
+                    'android' => [
+                        'priority' => 'HIGH',
+                        'notification' => [
+                            'channel_id' => $this->message_data['channel_id'] ?? 'default',
+                            'sound' => 'default',
+                        ],
+                    ],
 //                    "android" => [
 //                        "notification" => [
 //                            "click_action" => "TOP_STORY_ACTIVITY",
