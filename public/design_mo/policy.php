@@ -57,7 +57,7 @@ include_once("./inc/head_style02.php");
                 </li>
             </ul>
         </div>
-        
+
         <span class="sec_anchor" id="sec01"></span>
         <div class="py-3">
             <p class="fw_600 mb-3">1. 개인정보의 수집 및 이용목적</p>
@@ -191,7 +191,7 @@ include_once("./inc/head_style02.php");
                     </table>
                 </div>
             </div>
-            
+
             <span class="sec_anchor" id="sec04"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">4. 개인정보의 제3자 제공</p>
@@ -220,7 +220,7 @@ include_once("./inc/head_style02.php");
                     </table>
                 </div>
             </div>
-            
+
             <span class="sec_anchor" id="sec05"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">5. 개인정보의 처리위탁</p>
@@ -254,7 +254,7 @@ include_once("./inc/head_style02.php");
                     </table>
                 </div>
             </div>
-            
+
             <span class="sec_anchor" id="sec06"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">6. 개인정보의 파기절차 및 방법</p>
@@ -268,25 +268,25 @@ include_once("./inc/head_style02.php");
                     <p class="fs_14 wh_pr">- 회사는 전자적 파일 형태로 기록, 저장된 개인정보는 기록을 재생할 수 없도록 기술적 방법을 이용하여 파기하며, 종이문서에 기록, 저장된 개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다.</p>
                 </div>
             </div>
-            
+
             <span class="sec_anchor" id="sec07"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">7. 스마트폰 앱 관리</p>
                 <p class="fs_14 wh_pre mb-4">스마트폰 앱을 통해 서비스 이용 시, 이용자에게 개인정보 수집, 이용 동의를 받은 범위 내에서 단말기정보 등에 접근한다는 것을 고지하고 승인을 획득한 후 정보가 수집되거나 전송됩니다. 앱 상에서 이용자가 단말기 접근 권한을 허용하였다고 하여 허용권한과 관련된 모든 정보가 즉시 수집되거나 전송되는 것은 아닙니다. 서비스 제공을 위하여 스마트폰 앱의 접근 권한을 필수 또는 선택적으로 이용자에게 요청하고 있으며, 단말기 내 “설정”메뉴를 통하여 이용자가 직접 권한을 변경할 수 있습니다. 앱 권한에 대한 자세한 사항은 애플리케이션 스토어를 통해 확인하실 수 있습니다.</p>
             </div>
-            
+
             <span class="sec_anchor" id="sec08"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">8. 이용자 및 법정 대리인의 권리·의무 및 그 행사방법</p>
                 <p class="fs_14 wh_pre mb-4">이용자 및 이용자의 법정대리인은 언제든지 ㈜아소비교육 사이트의 “회원정보 수정”을 통하여 회원님의 개인정보를 열람, 정정 처리를 할 수 있으며, 전자우편 또는 서면으로 요청하신 경우 신속히 처리해 드리겠습니다. 이용자의 개인정보가 제 3자에게 제공되거나 처리위탁 된 경우 이용자는 회사 또는 “제3자/수탁자”에게 파기를 요청할 수 있습니다. 만 14세 미만 아동의 법정대리인은 아동의 개인정보에 대한 열람, 정정 및 동의철회를 요청할 수 있으며, 신속히 처리해 드리겠습니다.</p>
             </div>
-            
+
             <span class="sec_anchor" id="sec09"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">9. 개인정보 자동수집 장치의 설치/운영 및 그 거부에 관한 사항</p>
                 <p class="fs_14 wh_pre mb-4">회사는 이용자들에게 보다 적합하고 유용한 서비스를 제공하기 위하여 이용자의 정보를 수시로 저장하고 불러오는 ‘쿠키(Cookie)를 사용합니다. 쿠키란 회사의 웹사이트를 운영하는데 이용되는 서버가 이용자의 컴퓨터로 전송하는 소량의 정보로서 이용자의 컴퓨터 하드디스크에 저장됩니다. 이용자는 쿠키 설치에 대한 선택권을 가지고 있으므로, 서용여부를 선택할 수 있습니다. 쿠키 사용 여부 설정 방법은 웹브라우저 밴더사의 메뉴얼에 따라 설정을 하실 수 있습니다.</p>
             </div>
-            
+
             <span class="sec_anchor" id="sec10"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">10. 개인정보의 기술적·관리적 보호조치</p>
@@ -300,7 +300,7 @@ include_once("./inc/head_style02.php");
                     <p class="fs_14 wh_pr">개인정보처리시스템 접근권한 관리, 비밀번호 등의 암호화, 접속기록 보관 및 위·변조 방지 등</p>
                 </div>
             </div>
-            
+
             <span class="sec_anchor" id="sec11"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">11. 개인정보 보호책임자</p>
@@ -330,7 +330,7 @@ include_once("./inc/head_style02.php");
                     - 대검찰청 사이버수사과 : (국번없이 1301 / <a href="http://spo.go.kr" >http://spo.go.kr</a>)
                     - 경찰청 사이버안전지킴이 : (국번없이 182 / <a href="http://www.police.go.kr/www/security/cyber.jsp" >http://www.police.go.kr/www/security/cyber.jsp</a>)</p>
             </div>
-            
+
             <span class="sec_anchor" id="sec12"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">12. 광고성 정보 전송</p>
@@ -338,7 +338,7 @@ include_once("./inc/head_style02.php");
                     - 재화등의 거래관계를 통하여 고객으로부터 직접 연락처를 수집한 자가 6개월 이내에 자신이 처리하고 고객과 거래한 것과 동종의 재화등에 대한 영리목적의 광고성 정보를 전송하려는 경우
                     (2) 회사는 고객이 수신거부의사를 표시하거나 사전 동의를 철회할 경우 영리목적의 광고성 정보를 전송하지 않습니다.</p>
             </div>
-            
+
             <span class="sec_anchor" id="sec13"></span>
             <div class="py-3">
                 <p class="fw_600 mb-3">13. 고지의 의무</p>
